@@ -8,7 +8,7 @@ const UserSchema = Schema({
     email: {type:String, require:true},
     password: {type:String, require:true},
     role:{type:String, default:"role_user"},
-    image:{type:String, dafault: "default.png"},
+    image:{type:String, dafault: "https://res.cloudinary.com/diop3sm01/image/upload/v1670818379/avatar/user_ax4fkd.png"},
     create_at:{type:Date, default: Date.now}
 })
 

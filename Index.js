@@ -1,6 +1,7 @@
 const {connection} = require('./database/connection');
 const express = require("express");
 const cors = require("cors");
+const fileUpload = require("express-fileupload");
 
 // inicializar app
 console.log("proyecto arrancado");
@@ -18,6 +19,11 @@ app.use(cors());
 // convertir body a objeto js
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : './uploads'
+}));
 
 //llamar a routes
 const user_routes = require("./router/user.js");
