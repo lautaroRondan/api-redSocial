@@ -79,6 +79,7 @@ const following = (req, res) =>{
                 identity: follows,
                 total,
                 page: Math.ceil(total/itemPerPage),
+                follows,
                 user_following: followUserIds.following,
                 user_follower_me: followUserIds.followers
             })
@@ -108,6 +109,7 @@ const followers = (req, res) =>{
                 message: "usuario que me siguen",
                 identity: follows,
                 total,
+                follows,
                 page: Math.ceil(total/itemPerPage),
                 user_following: followUserIds.following,
                 user_follower_me: followUserIds.followers

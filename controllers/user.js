@@ -32,7 +32,7 @@ const register = (req, res)=>{
         }
         if(users && users.length>=1){
             return res.status(200).send({
-                status: "success",
+                status: "error",
                 message: "el usuario ya existe"
             })
         }
@@ -268,7 +268,7 @@ const upload = (req, res) => {
 
 const counters = async(req, res) => {
 
-    let userId = params.user.id;
+    let userId = req.user.id;
     if(req.params.id){
         userId = req.params.id
     }
