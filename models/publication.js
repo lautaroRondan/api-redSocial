@@ -3,7 +3,7 @@ const {Schema, model}= require('mongoose');
 const publicationSchema = Schema({
     user: {type: Schema.ObjectId, ref: "User"},
     text: {type: String, required: true},
-    file: String,
+    image: String,
     crated_at: {type: Date, default: Date.now}
 });
 

@@ -15,4 +15,11 @@ cloudinary.config({
     
 }
 
-module.exports = {uploadImage}
+async function uploadImageP(filePath){
+    return( await cloudinary.v2.uploader.upload(filePath,{
+        folder: 'publication'
+    }))
+    
+}
+
+module.exports = {uploadImage, uploadImageP}

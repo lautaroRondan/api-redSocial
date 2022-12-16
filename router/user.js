@@ -5,17 +5,6 @@ const userController = require('../controllers/user');
 const middleware = require('../middlewares/auth');
 
 
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb)=>{
-//         cb(null, "./upload/avatars")
-//     },
-//     filename: (req, file, cb) =>{
-//         cb(null, "avatar-"+Date.now()+"-"+file.originalname );
-//     }
-// })
-
-// const uploads = multer({storage});
-
 router.post("/register", userController.register);
 router.post("/login", userController.login);
 router.get("/profile/:id", middleware.auth, userController.profile);

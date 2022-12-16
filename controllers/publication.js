@@ -1,5 +1,6 @@
 const Publication = require('../models/publication');
-const followService = require('../service/followService')
+const followService = require('../service/followService');
+const cloudinary = require('../service/claudinary');
 
 const save = (req, res) => {
 
@@ -101,8 +102,33 @@ const user = (req, res) => {
 
 }
 
-const upload = (req, res) => {
-    //subir imagen de publicacion
+const upload = async(req, res) => {
+    let userIdentity = req.user;
+    let publicationId = req.params.id;
+    if (req.files?.image) {
+        console.log(req.files.image)
+        const result = await cloudinary.uploadImageP(req.files.image.tempFilePath);
+        
+        Publication.findOneAndUpdate({ "user": userIdentity.id, "_id": publicationId }, { image: result.url }, { new: true }, (error, publicationUpdate) => {
+
+            if (error || !publicationUpdate) {
+                return res.status(404).send({
+                    status: "error",
+                    messague: "error a la hora de subir la imagen"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                publication: publicationUpdate
+            });
+        })
+    }else{
+        return res.status(404).send({
+            status: "error",
+            messague: "la imagen no es valida"
+        });
+    }
 }
 
 const feed = async (req, res) => {
