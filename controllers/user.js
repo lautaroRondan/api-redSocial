@@ -7,18 +7,22 @@ const fs = require('fs');
 const mongoosePagination = require('mongoose-pagination');
 const followService = require('../service/followService')
 const cloudinary = require('../service/claudinary')
+const validate = require('../helpers/Validate');
 
 
 const register = (req, res) => {
 
     let params = req.body;
 
-    if (!params.name || !params.email || !params.password || !params.nick) {
+    try {
+        validate(params)
+    } catch (error) {
         return res.status(400).json({
             status: "error",
-            message: "falta completar algunos datos"
+            message: "Validacion no superada"
         })
     }
+    
 
     //verificar si existe el usuario
     User.find({
