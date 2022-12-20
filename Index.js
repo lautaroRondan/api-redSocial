@@ -26,9 +26,9 @@ app.use(fileUpload({
 }));
 
 //llamar a routes
-const user_routes = require("./router/user.js");
-const followRoutes = require('./router/follow.js');
-const publicationRoutes = require('./router/publication');
+const user_routes = require("./routes/user.js");
+const followRoutes = require('./routes/follow.js');
+const publicationRoutes = require('./routes/publication');
 
 app.use('/api/user', user_routes);
 app.use('/api/follow', followRoutes);

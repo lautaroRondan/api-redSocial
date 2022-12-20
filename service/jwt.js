@@ -1,6 +1,6 @@
 const jwt = require('jwt-simple');
 const moment = require('moment');
-const { use } = require('../router/user');
+const { use } = require('../routes/user');
 
 
 //clave secreta
