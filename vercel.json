@@ -1,0 +1,9 @@
+{
+  "versión": 2,
+  "construye": [
+    { "src": "./Index.js", "usar": "@vercel/nodo" }
+  ],
+  "rutas": [
+    { "src": "/(.*)", "dest": "/" }
+  ]
+}
