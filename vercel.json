@@ -1,9 +1,14 @@
 {
-  "versión": 2,
-  "construye": [
-    { "src": "./Index.js", "usar": "@vercel/nodo" }
-  ],
-  "rutas": [
-    { "src": "/(.*)", "dest": "/" }
-  ]
-}
+    "version": 2,
+    "builds": [{
+      "src": "./index.js",
+      "use": "@now/node-server"
+    }],
+    "routes": [{"handle": "filesystem"},
+      {
+        "src": "/.*",
+        "dest": "index.js"
+      }
+    ]
+  }
+  
