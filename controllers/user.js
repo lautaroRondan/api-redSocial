@@ -7,7 +7,7 @@ const fs = require('fs');
 const mongoosePagination = require('mongoose-pagination');
 const followService = require('../service/followService')
 const cloudinary = require('../service/claudinary')
-const validate = require('../helpers/Validate');
+const validateRegister = require('../helpers/Validate');
 
 
 const register = (req, res) => {
@@ -15,7 +15,7 @@ const register = (req, res) => {
     let params = req.body;
 
     try {
-        validate(params)
+        validateRegister(params)
     } catch (error) {
         return res.status(400).json({
             status: "error",
