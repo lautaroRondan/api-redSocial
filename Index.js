@@ -1,4 +1,4 @@
-const {connection} = require('./database/connection');
+const {connection} = require('./src/database/connection');
 const express = require("express");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
@@ -22,7 +22,7 @@ app.use(express.urlencoded({extended:true}));
 
 app.use(fileUpload({
     useTempFiles : true,
-    tempFileDir : './uploads'
+    tempFileDir : './src/uploads'
 }));
 
 //llamar a routes
