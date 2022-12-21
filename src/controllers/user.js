@@ -7,7 +7,7 @@ const fs = require('fs');
 const mongoosePagination = require('mongoose-pagination');
 const followService = require('../service/followService')
 const cloudinary = require('../service/claudinary')
-const validateRegister = require('../src/helpers/Validate');
+const validateRegister = require('../helpers/Validate');
 
 
 const register = (req, res) => {
