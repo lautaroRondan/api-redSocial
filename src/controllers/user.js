@@ -22,7 +22,7 @@ const register = (req, res) => {
             message: "Validacion no superada"
         })
     }
-    
+
 
     //verificar si existe el usuario
     User.find({
@@ -241,22 +241,34 @@ const upload = async (req, res) => {
     let userIdentity = req.user;
     if (req.files?.image) {
 
-        const result = await cloudinary.uploadImage(req.files.image.tempFilePath);
-        
-        User.findOneAndUpdate({ "_id": userIdentity.id }, { image: result.url }, { new: true }, (error, userUpdate) => {
 
-            if (error || !userUpdate) {
-                return res.status(404).send({
-                    status: "error",
-                    messague: "error a la hora de subir la imagen"
+        extencion = req.files.image.mimetype
+        // 
+        if (extencion != "image/png" && extencion != "image/jpg" &&
+            extencion != "image/jpeg" && extencion != "image/gif") {
+            return res.status(400).json({
+                status: 'error',
+                messague: 'imagen invalida'
+            })
+        } else {
+            const result = await cloudinary.uploadImage(req.files.image.tempFilePath);
+
+            User.findOneAndUpdate({ "_id": userIdentity.id }, { image: result.url }, { new: true }, (error, userUpdate) => {
+
+                if (error || !userUpdate) {
+                    return res.status(404).send({
+                        status: "error",
+                        messague: "error a la hora de subir la imagen"
+                    });
+                }
+
+                return res.status(200).send({
+                    status: "success",
+                    user: userUpdate
                 });
-            }
+            })
 
-            return res.status(200).send({
-                status: "success",
-                user: userUpdate
-            });
-        })
+        }
     }
 }
 
