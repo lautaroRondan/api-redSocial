@@ -3,6 +3,12 @@ const express = require("express");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 
+const corsOptions ={
+    origin:'*', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+ }
+
 // inicializar app
 console.log("proyecto arrancado");
 
@@ -14,7 +20,7 @@ const app = express();
 const puerto =  process.env.PORT ||3000;
 
 // configurar cors
-app.use(cors({ credentials: true }));
+app.use(cors(corsOptions));
 
 // convertir body a objeto js
 app.use(express.json());
