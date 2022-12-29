@@ -20,7 +20,7 @@ const app = express();
 const puerto =  process.env.PORT ||3000;
 
 // configurar cors
-app.use(cors(corsOptions));
+app.use(cors());
 
 // convertir body a objeto js
 app.use(express.json());
