@@ -11,6 +11,6 @@ router.get("/profile/:id", middleware.auth, userController.profile);
 router.get("/list/:page?", middleware.auth, userController.list);
 router.get("/counters/:id", middleware.auth, userController.counters);
 router.put("/update", middleware.auth, userController.update);
-router.post("/upload", middleware.auth, userController.upload);
+router.put("/upload", middleware.auth, userController.upload);
 
 module.exports = router;
