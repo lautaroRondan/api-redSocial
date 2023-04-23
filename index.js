@@ -4,7 +4,7 @@ const cors = require("cors");
 const fileUpload = require("express-fileupload");
 
 const corsOptions ={
-    origin:'https://lr-redsocial.netlify.app', 
+    origin:'*', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200,
  }
@@ -20,7 +20,7 @@ const app = express();
 const puerto =  process.env.PORT ||3000;
 
 // configurar cors
-app.use(cors({corsOptions}));
+app.use(cors(corsOptions));
 
 // convertir body a objeto js
 app.use(express.json());
