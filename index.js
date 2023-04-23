@@ -4,7 +4,7 @@ const cors = require("cors");
 const fileUpload = require("express-fileupload");
 
 const corsOptions ={
-    origin:'*', 
+    origin:'https://lr-redsocial.netlify.app', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200,
  }

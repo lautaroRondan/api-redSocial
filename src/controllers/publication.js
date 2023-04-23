@@ -106,7 +106,7 @@ const upload = async(req, res) => {
     let userIdentity = req.user;
     let publicationId = req.params.id;
     if (req.files?.image) {
-        console.log(req.files.image)
+        // console.log(req.files.image)
         const result = await cloudinary.uploadImageP(req.files.image.tempFilePath);
         
         Publication.findOneAndUpdate({ "user": userIdentity.id, "_id": publicationId }, { image: result.url }, { new: true }, (error, publicationUpdate) => {
